@@ -16,18 +16,19 @@ export class SidenavComponent implements OnInit {
 
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_SCREEN_BREAKPOINT}px`);
 
-  // users: Observable<User[]>;
-  users: User[];
+  users: Observable<User[]>;
 
   constructor(zone: NgZone, private userService: UserService) {
     this.mediaMatcher.addListener(mql => zone.run(()=>this.mediaMatcher = mql));
   }
 
   ngOnInit() {
-    this.users = [
-      {name: 'tomek'},
-      {name: 'ola'}
-    ]
+    this.users = this.userService.users;
+    this.userService.loadAll();
+
+    this.users.subscribe(data => {
+      console.log(data);
+    })
   }
 
   isScreenSmall(): boolean {
