@@ -12,17 +12,19 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { UsermanagerAppComponent } from './usermanager-app.component';
 import { UserService } from './services/user.service';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { ManageUserComponent } from './components/manage-user/manage-user.component';
 
 const routes: Routes = [
   { 
     path: '', component: UsermanagerAppComponent, 
     children: [
-      { path: '', component: MainContentComponent}
+      { path: 'users', component: MainContentComponent},
+      { path: 'manage', component: ManageUserComponent},
+      { path: 'user-list', component: UserListComponent},
+      { path: '**', component: MainContentComponent},
     ]
   },
-  {
-    path: '**', redirectTo: ''
-  }
 ]
 
 
@@ -37,6 +39,6 @@ const routes: Routes = [
   providers: [
     UserService
   ],
-  declarations: [UsermanagerAppComponent, MainContentComponent, SidenavComponent, ToolbarComponent]
+  declarations: [UsermanagerAppComponent, MainContentComponent, SidenavComponent, ToolbarComponent, UserListComponent, ManageUserComponent]
 })
 export class UsermanagerModule { }
