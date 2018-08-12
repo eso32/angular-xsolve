@@ -1,16 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FindUserComponent } from './find-user.component';
-import {MaterialModule} from '../../../shared/material/material.module'
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from '../../../shared/material/material.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from '../../services/user/user.service';
-import {of} from 'rxjs';
+import { of } from 'rxjs';
 
 const userServiceStub = {
   getUserById(id) {
-    const users = {id};
-    return of( users );
+    const users = { id };
+    return of(users);
   }
 };
 
@@ -20,15 +20,15 @@ describe('FindUserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FindUserComponent ],
+      declarations: [FindUserComponent],
       imports: [
         MaterialModule,
         HttpClientModule,
         BrowserAnimationsModule
       ],
-      providers: [{provide: UserService, useValue: userServiceStub}]
+      providers: [{ provide: UserService, useValue: userServiceStub }]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

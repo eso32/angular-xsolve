@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MockMediaQueryList } from '@angular/flex-layout';
-import { Observable } from 'rxjs';
-import { User } from '../../models/user.model';
-import { UserService } from '../../services/user/user.service';
 import { NgZone } from '@angular/core';
-import { menuItem } from '../../models/menuItem.model';
+import { Observable } from 'rxjs';
+
+import { UserService } from '../../services/user/user.service';
+import { MenuItem } from '../../models/MenuItem.model';
+import { User } from '../../models/User.model';
 
 const SMALL_SCREEN_BREAKPOINT = 720;
 
@@ -16,10 +17,10 @@ const SMALL_SCREEN_BREAKPOINT = 720;
 export class SidenavComponent implements OnInit {
 
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_SCREEN_BREAKPOINT}px`);
-  private menu: menuItem[];
+  public menu: MenuItem[];
 
   constructor(zone: NgZone, private userService: UserService) {
-    this.mediaMatcher.addListener(mql => zone.run(()=>this.mediaMatcher = mql));
+    this.mediaMatcher.addListener(mql => zone.run(() => this.mediaMatcher = mql));
     this.menu = [
       {
         link: '/find-user',
@@ -33,7 +34,7 @@ export class SidenavComponent implements OnInit {
         link: '/user-list',
         title: 'Users list'
       }
-    ]
+    ];
   }
 
   ngOnInit() {

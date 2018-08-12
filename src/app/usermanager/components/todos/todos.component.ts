@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {TodosService} from '../../services/todos/todos.service';
 import { Subscription } from 'rxjs';
+
+import { TodosService } from '../../services/todos/todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -15,12 +16,12 @@ export class TodosComponent implements OnInit, OnDestroy {
   constructor(private todosService: TodosService) { }
 
   ngOnInit() {
-    this.todoSubscription = this.todosService.getAllTodos().subscribe( (todos: any) => {
+    this.todoSubscription = this.todosService.getAllTodos().subscribe((todos: any) => {
       this.todos = todos;
-    })
+    });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.todoSubscription.unsubscribe();
   }
 

@@ -5,7 +5,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FindUserComponent } from './components/find-user/find-user.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -19,16 +19,16 @@ import { ErrorHandler } from './services/error.handler';
 import { TodosService } from './services/todos/todos.service';
 
 const routes: Routes = [
-  { 
-    path: '', component: UsermanagerAppComponent, 
+  {
+    path: '', component: UsermanagerAppComponent,
     children: [
-      { path: 'find-user', component: FindUserComponent},
-      { path: 'todos', component: TodosComponent},
-      { path: 'user-list', component: UserListComponent},
-      { path: '**', component: FindUserComponent},
+      { path: 'find-user', component: FindUserComponent },
+      { path: 'todos', component: TodosComponent },
+      { path: 'user-list', component: UserListComponent },
+      { path: '**', component: FindUserComponent },
     ]
   },
-]
+];
 
 
 @NgModule({
@@ -43,7 +43,7 @@ const routes: Routes = [
     UserService,
     TodosService,
     ErrorHandler,
-    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
   ],
   declarations: [UsermanagerAppComponent, FindUserComponent, SidenavComponent, ToolbarComponent, UserListComponent, TodosComponent]
 })

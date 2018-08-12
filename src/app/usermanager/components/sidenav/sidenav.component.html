@@ -1,20 +1,27 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav mat-elevation-z10" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+<mat-drawer-container class="main-container"
+  autosize>
+  <mat-drawer #drawer
+    class="main-sidenav mat-elevation-z10"
+    [opened]="!isScreenSmall()"
+    [mode]="isScreenSmall() ? 'over' : 'side'">
     <mat-toolbar color="primary">
       Users
     </mat-toolbar>
     <mat-nav-list>
-      <mat-list-item *ngFor="let menuItem of menu">
-          <a class="list-item" matLine [routerLink]="menuItem.link">{{menuItem.title}}</a>
+      <mat-list-item *ngFor="let menuItem of menu"
+        [routerLink]="menuItem.link">
+        <a class="list-item"
+          matLine>{{menuItem.title}}</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
+  <div class="main-sidenav-content">
     <app-toolbar (toggleDrawer)="drawer.toggle()"></app-toolbar>
-    <div class="wrapper" [ngClass]="{'small-wrapper': isScreenSmall()}">
+    <div class="wrapper"
+      [ngClass]="{'small-wrapper': isScreenSmall()}">
       <router-outlet></router-outlet>
     </div>
-  </div> 
+  </div>
 
 </mat-drawer-container>

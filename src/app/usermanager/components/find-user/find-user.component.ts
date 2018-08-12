@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../../services/user/user.service';
-import { User } from '../../models/user.model';
-import {filter} from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+
+import { UserService } from '../../services/user/user.service';
+import { User } from '../../models/User.model';
 
 @Component({
   selector: 'app-find-user',
@@ -21,19 +22,19 @@ export class FindUserComponent implements OnInit, OnDestroy {
   }
 
   getUserById(id: number) {
-    if(!id) {
+    if (!id) {
       this.user = undefined;
-      return 
+      return;
     }
-    console.log(id);
-    this.userSubscription = this.userService.getUserById(id).subscribe( (user: User) => {
+
+    this.userSubscription = this.userService.getUserById(id).subscribe((user: User) => {
       this.user = user;
     }, err => {
       this.user = undefined;
-    })
+    });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
 

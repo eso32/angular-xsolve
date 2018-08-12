@@ -8,7 +8,7 @@ describe('TodosService', () => {
     TestBed.configureTestingModule({
       providers: [TodosService],
       imports: [
-        HttpClientModule        
+        HttpClientModule
       ]
     });
   });

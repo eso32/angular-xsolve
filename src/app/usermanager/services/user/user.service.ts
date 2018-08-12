@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { User } from '../../models/user.model';
+import { User } from '../../models/User.model';
 import { HttpClient } from '@angular/common/http';
-import {URLS} from '../../models/enums/URLS.enum';
+import { URLS } from '../../models/enums/URLS.enum';
 
 
 @Injectable({
@@ -14,10 +14,10 @@ export class UserService {
 
   private dataStore: {
     users: User[]
-  }
+  };
 
   constructor(private httpClient: HttpClient) {
-    this.dataStore = { users: []};
+    this.dataStore = { users: [] };
     this._user = new BehaviorSubject<User[]>(this.dataStore.users);
   }
 
@@ -27,12 +27,11 @@ export class UserService {
 
   loadAll(): Subscription {
     const usersUrl = URLS.PLACEHOLDER_USERS;
-    
     return this.httpClient.get<User[]>(usersUrl)
-    .subscribe(data => {
-      this.dataStore.users = data;
-      this._user.next(Object.assign({}, this.dataStore).users);
-    })
+      .subscribe(data => {
+        this.dataStore.users = data;
+        this._user.next(Object.assign({}, this.dataStore).users);
+      });
   }
 
   getUserById(id: number): Observable<User> {

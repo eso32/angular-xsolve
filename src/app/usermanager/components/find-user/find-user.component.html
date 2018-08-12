@@ -1,24 +1,28 @@
 <mat-card>
   <h1>Find user</h1>
-  
+
   <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="User ID" (input)="getUserById(userInput.value)" #userInput>
+      <input matInput
+        placeholder="User ID"
+        (input)="getUserById(userInput.value)"
+        #userInput>
     </mat-form-field>
   </form>
 
-  
+
   <mat-card *ngIf="user">
-      <mat-toolbar color="primary">{{user.name}}</mat-toolbar>
-      <div class="details">
-          id: {{user.id}}<br>
-          username: {{user.username}}<br>
-          email: {{user.email}}<br>
-          phone: {{user.phone}}<br>
-      </div>
+    <mat-toolbar color="primary">{{user.name}}</mat-toolbar>
+    <div class="details">
+      id: {{user.id}}
+      <br> username: {{user.username}}
+      <br> email: {{user.email}}
+      <br> phone: {{user.phone}}
+      <br>
+    </div>
 
   </mat-card>
-  
+
   <div *ngIf="!user">
     Use input to find user by ID
   </div>

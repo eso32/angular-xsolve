@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {URLS} from '../../models/enums/URLS.enum';
+import { URLS } from '../../models/enums/URLS.enum';
 import { Observable } from 'rxjs';
 
 @Injectable({

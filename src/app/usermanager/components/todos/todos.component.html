@@ -3,11 +3,15 @@
     Todos
   </h1>
   <h3>Here you can see all todos of users registered in the system</h3>
-  
-  <mat-progress-bar mode="indeterminate" *ngIf="!todos"></mat-progress-bar>
 
-  <mat-card class="todo-details" *ngFor="let todo of todos">
+  <mat-progress-bar mode="indeterminate"
+    *ngIf="!todos"></mat-progress-bar>
+
+  <mat-card class="todo-details"
+    *ngFor="let todo of todos">
     {{todo.title}}
-    <mat-checkbox class="is-completed" [checked]="todo.completed" color="primary"></mat-checkbox>
+    <mat-checkbox class="is-completed"
+      [checked]="todo.completed"
+      color="primary"></mat-checkbox>
   </mat-card>
 </mat-card>

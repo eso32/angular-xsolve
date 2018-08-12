@@ -1,12 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {Routes, RouterModule} from '@angular/router';
-import {APP_BASE_HREF} from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', loadChildren: './usermanager/usermanager.module#UsermanagerModule'},
-  { path: '**', redirectTo: ''}
-]
+  { path: '', loadChildren: './usermanager/usermanager.module#UsermanagerModule' },
+  { path: '**', redirectTo: '' }
+];
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,12 +15,10 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        // BrowserModule,
-        // BrowserAnimationsModule,
         RouterModule.forRoot(routes)
       ],
       providers: [
-        {provide: APP_BASE_HREF, useValue: '/'}
+        { provide: APP_BASE_HREF, useValue: '/' }
       ]
     }).compileComponents();
   }));
