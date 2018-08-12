@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MockMediaQueryList } from '@angular/flex-layout';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user/user.service';
 import { NgZone } from '@angular/core';
 import { menuItem } from '../../models/menuItem.model';
 
@@ -22,12 +22,12 @@ export class SidenavComponent implements OnInit {
     this.mediaMatcher.addListener(mql => zone.run(()=>this.mediaMatcher = mql));
     this.menu = [
       {
-        link: '/users',
-        title: 'User'
+        link: '/find-user',
+        title: 'Find user'
       },
       {
-        link: '/manage',
-        title: 'Manage users'
+        link: '/todos',
+        title: 'Todos'
       },
       {
         link: '/user-list',

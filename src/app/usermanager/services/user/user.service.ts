@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { User } from '../../models/user.model';
 import { HttpClient } from '@angular/common/http';
+import {URLS} from '../../models/enums/URLS.enum';
 
 
 @Injectable({
@@ -24,16 +25,20 @@ export class UserService {
     return this._user.asObservable();
   }
 
-  loadAll() {
-    const usersUrl = 'http://jsonplaceholder.typicode.com/users';
-
+  loadAll(): Subscription {
+    const usersUrl = URLS.PLACEHOLDER_USERS;
+    
     return this.httpClient.get<User[]>(usersUrl)
     .subscribe(data => {
       this.dataStore.users = data;
       this._user.next(Object.assign({}, this.dataStore).users);
-    }, error => {
-      console.log('Failed when fetching users');
     })
+  }
+
+  getUserById(id: number): Observable<User> {
+    const userUrl = URLS.PLACEHOLDER_USERS + id.toString();
+
+    return this.httpClient.get<User>(userUrl);
   }
 
 }

@@ -6,17 +6,15 @@ import { MatTableModule, MatSortModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import {Routes, RouterModule} from '@angular/router';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', loadChildren: './usermanager/usermanager.module#UsermanagerModule'},
-  { path: '**', component: NotFoundComponent}
+  { path: '**', redirectTo: ''}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
